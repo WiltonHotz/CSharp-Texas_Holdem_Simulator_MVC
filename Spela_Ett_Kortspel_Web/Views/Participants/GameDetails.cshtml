@@ -1,0 +1,47 @@
+﻿@model List<Participant>
+@{
+    ViewData["Title"] = "GameDetails";
+}
+
+<table>
+    <thead>
+        <tr>
+            <th colspan="6"><center><h3>Game Details</h3></center></th>
+        </tr>
+        <tr>
+            <th colspan="6"><center><h3>Tabled Cards: @Html.Raw(@Model.First().CopyTableHTML)</h3></center></th>
+        </tr>
+        <tr>
+            <th>Player</th>
+            <th>ID</th>
+            <th>Dealt hand</th>
+            <th>Best 5-card hand</th>
+            <th>Hand Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var player in Model)
+        {
+            if (player.Id == Model.First().Id)
+            {
+                <tr>
+                    <td class="winner">@player.Name</td>
+                    <td class="winner">@player.Id</td>
+                    <td class="winner">@Html.Raw(@player.TwoCardHTML)</td>
+                    <td class="winner">@Html.Raw(@player.Hand.HTMLSHS)</td>
+                    <td class="winner">@player.Hand.HandDescription</td>
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    <td>@player.Name</td>
+                    <td>@player.Id</td>
+                    <td>@Html.Raw(@player.TwoCardHTML)</td>
+                    <td>@Html.Raw(@player.Hand.HTMLSHS)</td>
+                    <td>@player.Hand.HandDescription</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

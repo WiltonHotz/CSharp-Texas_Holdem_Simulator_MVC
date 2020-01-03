@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <style>
+
+
+        table {
+            border-collapse: collapse;
+            background-color: #3c3535;
+            color: white;
+            padding: 0.5rem;
+        }
+
+        td, th {
+            border: 1px solid #999;
+            padding: 0.5rem;
+            text-align: left;
+        }
+        .winner {
+            background-color: mediumspringgreen;
+            color: black;
+            font-weight: bold;
+        }
+        img {
+            width: 60px;
+            height: 60px;
+            padding: 2px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Participants" asp-action="Index">[ H O M E ]</a>
+                </li>
+            </ul>
+        </nav>
+        <div>
+            <hr />
+            @RenderBody()
+            <hr />
+        </div>
+        <div>
+            @await  Component.InvokeAsync("WinnersIndex")
+        </div>
+        <footer>
+            <small>
+                © Wilton Hotz
+            </small>
+        </footer>
+    </div>
+    @RenderSection("scripts", false)
+</body>
+</html>
+
+@*<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>*@

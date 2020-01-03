@@ -1,0 +1,25 @@
+﻿@model Spela_Ett_Kortspel_Viktor_Hoerwing.Models.ViewModels.WinnersIndexVM[]
+
+<h3>All Winners</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Player</th>
+            <th>Winning Hand</th>
+            <th>Description</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var winner in Model)
+        {
+            <tr>
+                <td>@winner.Name</td>
+                <td>@Html.Raw(@winner.HTMLSHS)</td>
+                <td>@winner.HandDescription</td>
+                <td>@winner.Date</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<hr />
