@@ -5,6 +5,10 @@
     <h3>Create Game</h3>
     <form asp-controller="Participants" asp-action="Index">
 
+        <label asp-for="Name"></label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+        <br />
         <label asp-for="NumberOfOpponents"></label>
         <select asp-for="SelectedNumberOfOpponents"
                 asp-items="Model.NumberOfOpponents"></select>

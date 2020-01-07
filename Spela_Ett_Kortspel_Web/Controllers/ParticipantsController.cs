@@ -21,8 +21,9 @@ namespace Spela_Ett_Kortspel_Web.Controllers
         [Route("")]
         [Route("winners/index")]
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(string sortOrder)
         {
+            ViewBag.sortOrder = sortOrder;
             var viewModel = service.GetDropDownItems();
             return View(viewModel);
         }
@@ -35,7 +36,7 @@ namespace Spela_Ett_Kortspel_Web.Controllers
             {
                 return RedirectToAction(nameof(Index));
             }
-            var viewModel = service.StartGame(game.SelectedNumberOfOpponents);
+            var viewModel = service.StartGame(game.Name, game.SelectedNumberOfOpponents);
             service.AddWinnerToDatabase(viewModel.First());
             return View(viewModel);
         }

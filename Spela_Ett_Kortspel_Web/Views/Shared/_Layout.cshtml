@@ -4,7 +4,6 @@
 <head>
     <style>
 
-
         table {
             border-collapse: collapse;
             background-color: #3c3535;
@@ -24,7 +23,7 @@
         }
         img {
             width: 60px;
-            height: 60px;
+            height: 65px;
             padding: 2px;
         }
     </style>
@@ -47,7 +46,7 @@
             <hr />
         </div>
         <div>
-            @await  Component.InvokeAsync("WinnersIndex")
+            @await Component.InvokeAsync("WinnersIndex", new { sortOrder = ViewBag.sortOrder })
         </div>
         <footer>
             <small>

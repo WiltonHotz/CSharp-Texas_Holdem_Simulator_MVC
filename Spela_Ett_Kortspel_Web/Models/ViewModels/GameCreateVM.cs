@@ -15,5 +15,7 @@ namespace Spela_Ett_Kortspel_Viktor_Hoerwing.Models.ViewModels
         public List<SelectListItem> NumberOfOpponents { get; set; }
         [Range(1, 8)]
         public int SelectedNumberOfOpponents { get; set; }
+        [Required]
+        public string Name { get; set; }
     }
 }

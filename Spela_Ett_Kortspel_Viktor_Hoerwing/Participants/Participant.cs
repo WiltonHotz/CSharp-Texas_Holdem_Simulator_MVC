@@ -10,7 +10,7 @@ namespace Spela_Ett_Kortspel_Viktor_Hoerwing
     public abstract class Participant
     {
         public int Id { get; set; } = 0;
-        public string Name { get; private set; }
+        public string Name { get; set; }
         public List<PlayingCard> Cards { get; set; }
         public List<PlayingCard> TwoCardHand { get; set; }
         public Hand Hand { get; set; }

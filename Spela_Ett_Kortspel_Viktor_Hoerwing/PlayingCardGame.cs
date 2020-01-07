@@ -11,13 +11,13 @@ namespace Spela_Ett_Kortspel_Viktor_Hoerwing
     {
         public List<Participant> PlayersInWinningOrder { get; set; }
         public static int id = 0;
-        public PlayingCardGame(int numberOfOpponents = 1)
+        public PlayingCardGame(string name, int numberOfOpponents = 1)
         {
             PlayingCardDeck deck = new PlayingCardDeck();
             Judge judge = new Judge();
 
             var (player, opponents, table) = CreatePlayersAndTable(deck, numberOfOpponents);
-
+            player.Name = name;
             GetHands(player, opponents, table);
 
             judge.OrderParticipants();

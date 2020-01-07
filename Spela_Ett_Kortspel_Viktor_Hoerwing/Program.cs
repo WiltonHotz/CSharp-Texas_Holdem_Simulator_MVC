@@ -10,7 +10,7 @@ namespace Spela_Ett_Kortspel_Viktor_Hoerwing
     {
         static void Main(string[] args)
         {
-            PlayingCardGame game = new PlayingCardGame();
+            PlayingCardGame game = new PlayingCardGame("Viktor");
         }
     }
 }

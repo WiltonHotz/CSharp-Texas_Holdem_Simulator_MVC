@@ -17,15 +17,15 @@ namespace Spela_Ett_Kortspel_Viktor_Hoerwing.Models
         {
             this.context = context;
         }
-        public GameIndexVM GetGameIndexVM()
-        {
-            return new GameIndexVM()
-            {
-                CreateGameForm = GetDropDownItems(),
-                WinnersList = GetAllWinners()
-            };
-        }
-        public WinnersIndexVM[] GetAllWinners()
+        //public GameIndexVM GetGameIndexVM()
+        //{
+        //    return new GameIndexVM()
+        //    {
+        //        CreateGameForm = GetDropDownItems(),
+        //        WinnersList = GetAllWinners()
+        //    };
+        //}
+        public IEnumerable<WinnersIndexVM> GetAllWinners()
         {
             return context.PokerWinners
                 .Select(o => new WinnersIndexVM
@@ -35,8 +35,7 @@ namespace Spela_Ett_Kortspel_Viktor_Hoerwing.Models
                     HandDescription = o.HandDescription,
                     Date = o.Date
                 })
-                .OrderBy(o => o.Date)
-                .ToArray();
+                .ToList();
         }
 
         internal void AddWinnerToDatabase(Participant participant)
@@ -54,23 +53,14 @@ namespace Spela_Ett_Kortspel_Viktor_Hoerwing.Models
             }
         }
 
-        public Task<WinnersIndexVM[]> GetAllWinnersVMAsync()
+        public Task<IEnumerable<WinnersIndexVM>> GetAllWinnersVMAsync()
         {
-            return Task.Run(() => context.PokerWinners
-                .Select(o => new WinnersIndexVM
-                {
-                    Name = o.Name,
-                    HTMLSHS = Hand.ImageBuilder(o.ShortHandSyntax),
-                    HandDescription = o.HandDescription,
-                    Date = o.Date
-                })
-                .OrderByDescending(o => o.Date)
-                .ToArray());
+            return Task.Run(() => GetAllWinners());
         }
 
-        public List<Participant> StartGame(int numberOfOpponents)
+        public List<Participant> StartGame(string name, int numberOfOpponents)
         {
-            PlayingCardGame game = new PlayingCardGame(numberOfOpponents);
+            PlayingCardGame game = new PlayingCardGame(name, numberOfOpponents);
             return game.PlayersInWinningOrder;
         }
 
